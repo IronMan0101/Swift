@@ -19,7 +19,7 @@
 		0F1D20FA851B2377E7003498 /* Pods-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swift/Pods-Swift.release.xcconfig"; sourceTree = "<group>"; };
 		69E01598C5F0EFE276428FFC /* Pods_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A69016648F682564383024ED /* Pods-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swift/Pods-Swift.debug.xcconfig"; sourceTree = "<group>"; };
-		FC11923F1F66302F00A5D2F3 /* Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC11923F1F66302F00A5D2F3 /* IMYSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMYSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC1192421F66302F00A5D2F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC1192441F66302F00A5D2F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FC1192471F66302F00A5D2F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 		FC1192401F66302F00A5D2F3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FC11923F1F66302F00A5D2F3 /* Swift.app */,
+				FC11923F1F66302F00A5D2F3 /* IMYSwift.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -91,9 +91,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FC11923E1F66302F00A5D2F3 /* Swift */ = {
+		FC11923E1F66302F00A5D2F3 /* IMYSwift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FC1192511F66302F00A5D2F3 /* Build configuration list for PBXNativeTarget "Swift" */;
+			buildConfigurationList = FC1192511F66302F00A5D2F3 /* Build configuration list for PBXNativeTarget "IMYSwift" */;
 			buildPhases = (
 				A43E1B89A1B4A5A92BEAF5BD /* [CP] Check Pods Manifest.lock */,
 				FC11923B1F66302F00A5D2F3 /* Sources */,
@@ -106,9 +106,9 @@
 			);
 			dependencies = (
 			);
-			name = Swift;
+			name = IMYSwift;
 			productName = Swift;
-			productReference = FC11923F1F66302F00A5D2F3 /* Swift.app */;
+			productReference = FC11923F1F66302F00A5D2F3 /* IMYSwift.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -127,7 +127,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FC11923A1F66302F00A5D2F3 /* Build configuration list for PBXProject "Swift" */;
+			buildConfigurationList = FC11923A1F66302F00A5D2F3 /* Build configuration list for PBXProject "IMYSwift" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -140,7 +140,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FC11923E1F66302F00A5D2F3 /* Swift */,
+				FC11923E1F66302F00A5D2F3 /* IMYSwift */,
 			);
 		};
 /* End PBXProject section */
@@ -368,7 +368,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Swift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sd.Swift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sd.IMYSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -381,7 +381,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Swift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sd.Swift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sd.IMYSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -390,7 +390,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FC11923A1F66302F00A5D2F3 /* Build configuration list for PBXProject "Swift" */ = {
+		FC11923A1F66302F00A5D2F3 /* Build configuration list for PBXProject "IMYSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FC11924F1F66302F00A5D2F3 /* Debug */,
@@ -399,7 +399,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FC1192511F66302F00A5D2F3 /* Build configuration list for PBXNativeTarget "Swift" */ = {
+		FC1192511F66302F00A5D2F3 /* Build configuration list for PBXNativeTarget "IMYSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FC1192521F66302F00A5D2F3 /* Debug */,

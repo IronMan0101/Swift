@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FC11923E1F66302F00A5D2F3"
-               BuildableName = "Swift.app"
-               BlueprintName = "Swift"
-               ReferencedContainer = "container:Swift.xcodeproj">
+               BuildableName = "IMYSwift.app"
+               BlueprintName = "IMYSwift"
+               ReferencedContainer = "container:IMYSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FC11923E1F66302F00A5D2F3"
-            BuildableName = "Swift.app"
-            BlueprintName = "Swift"
-            ReferencedContainer = "container:Swift.xcodeproj">
+            BuildableName = "IMYSwift.app"
+            BlueprintName = "IMYSwift"
+            ReferencedContainer = "container:IMYSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FC11923E1F66302F00A5D2F3"
-            BuildableName = "Swift.app"
-            BlueprintName = "Swift"
-            ReferencedContainer = "container:Swift.xcodeproj">
+            BuildableName = "IMYSwift.app"
+            BlueprintName = "IMYSwift"
+            ReferencedContainer = "container:IMYSwift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FC11923E1F66302F00A5D2F3"
-            BuildableName = "Swift.app"
-            BlueprintName = "Swift"
-            ReferencedContainer = "container:Swift.xcodeproj">
+            BuildableName = "IMYSwift.app"
+            BlueprintName = "IMYSwift"
+            ReferencedContainer = "container:IMYSwift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

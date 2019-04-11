@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Swift.xcodeproj">
+      location = "group:/Users/suzq/Documents/GitHub/AliGit/Swift/IMYSwift.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
