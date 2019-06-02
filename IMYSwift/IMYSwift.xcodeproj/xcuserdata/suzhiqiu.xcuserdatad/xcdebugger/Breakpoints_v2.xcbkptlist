@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IMYSwift/AppDelegate.swift"
-            timestampString = "581164403.364803"
+            timestampString = "581165958.57391"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
             endingLineNumber = "44"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "doLog(str:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
