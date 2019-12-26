@@ -8,6 +8,44 @@
 
 import UIKit
 
+/*
+  分类
+ */
+ extension UIView {
+     public var x: CGFloat {
+         get {
+            return self.frame.origin.x;
+         }
+         set {
+            var rect = self.frame
+            rect.origin.x = newValue
+            self.frame = rect
+         }
+     }
+ }
+/*
+ 协议
+ */
+protocol UIViewProtocol : class {
+    func read() -> String
+}
+
+class MyClass: UIViewProtocol {
+    func read() -> String {
+        return "read"
+    }
+}
+
+class YouClass : UIViewController {
+    /*
+       声明代理
+       */
+     // weak var delegate: UIViewProtocol?
+    weak var delegate: UIViewProtocol?
+}
+ 
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,12 +54,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        var str = self.doLog(str:"124");
-        print(str);
+//Test 分类
+//        var view:UIView = UIView()
+//        view.x = 100
+//        print(view)
+        //Test 协议
+        var  my:MyClass =  MyClass()
+        print(my.read());
+        
+       // UITableView
         
         return true
     }
     
+    
+    /*
+     声明数组
+     */
+    var exampleany = [Any]()
+    
+    /*
+     声明代理
+     */
+    weak var delegate: UIViewProtocol?
   
     
     /*
