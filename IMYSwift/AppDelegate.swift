@@ -36,21 +36,47 @@ class MyClass: UIViewProtocol {
     }
 }
 
-class YouClass : UIViewController {
+/*
+block
+*/
+typealias ClickBlock = (Int)->Void
+
+class YouVC : UIViewController {
     /*
        声明代理
        */
      // weak var delegate: UIViewProtocol?
     weak var delegate: UIViewProtocol?
+    
+    var clickBlock:ClickBlock?
+    
+    func read() {
+        if let txt = self.delegate?.read() { //必须得解码出来
+            var ss:String = txt
+            print(ss)
+        } else  {
+            print("为空了")
+        }
+        
+        if let clickIndexBock = clickBlock {
+            clickIndexBock(5)
+        }
+    }
+    
 }
- 
+/*
+kvo
+*/
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate ,UIViewProtocol{
 
     var window: UIWindow?
 
+    func read() -> String {
+        return "继承协议";
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -59,14 +85,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        view.x = 100
 //        print(view)
         //Test 协议
-        var  my:MyClass =  MyClass()
+        var  my:YouVC =  YouVC()
+        my.delegate = self
+       
+    
+        my.clickBlock  = {
+            (param:Int)->Void in  // in
+            print("input param value is : \(param)")
+        }
         print(my.read());
-        
-       // UITableView
+        //==
+        self.gcd()
+
         
         return true
     }
     
+    /*
+    GCD
+    */
+    func gcd() {
+        DispatchQueue.main.async {
+            print("main",Thread.current)
+        }
+        
+        let queue = DispatchQueue(label: "queque", qos: .default, attributes: .concurrent, autoreleaseFrequency: .inherit)
+        queue.async {
+             print("queue" , Thread.current)
+        }
+    }
     
     /*
      声明数组
