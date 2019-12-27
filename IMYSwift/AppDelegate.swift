@@ -61,6 +61,10 @@ class YouVC : UIViewController {
         if let clickIndexBock = clickBlock {
             clickIndexBock(5)
         }
+        /*
+         Swift 通知
+        */
+        NotificationCenter.default.post(name: NSNotification.Name("Notify"), object: nil, userInfo: nil)
     }
     
 }
@@ -80,6 +84,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UIViewProtocol{
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //通知
+       NotificationCenter.default.addObserver(self, selector: #selector(notifyMethod), name: NSNotification.Name("Notify"), object: nil)
 //Test 分类
 //        var view:UIView = UIView()
 //        view.x = 100
@@ -96,9 +102,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UIViewProtocol{
         print(my.read());
         //==
         self.gcd()
-
+        //通知
+        //var anyArr:[Any] = [Any]()  // Class 类型 AnyObject  "1"  结构体啥的 用Any
+        // AnyObject
+       
+        
         
         return true
+    }
+    
+    @objc func notifyMethod() {
+        print("notifyMethod")
     }
     
     /*
