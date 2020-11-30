@@ -6,6 +6,9 @@
 //  Copyright © 2019 suzhiqiu. All rights reserved.
 //
 
+
+//https://www.jianshu.com/p/6004b9b2c7e7
+
 import UIKit
 
 /*
@@ -72,6 +75,26 @@ class YouVC : UIViewController {
 kvo
 */
 
+/*下标*/
+class DayWeaks {
+    private  var days = ["OneDay","TwoDay","ThreeDay"]
+    
+    subscript(index:Int) -> String {
+        get {
+            return days[index]
+        }
+        set (newValue) {
+            self.days[index] = newValue
+        }
+    }
+    
+}
+
+
+
+
+
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate ,UIViewProtocol{
@@ -86,6 +109,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UIViewProtocol{
         // Override point for customization after application launch.
         //通知
        NotificationCenter.default.addObserver(self, selector: #selector(notifyMethod), name: NSNotification.Name("Notify"), object: nil)
+        
+        //
+       //字典
+        let someDic:[Int:String] = [1:"s",2:"p"]
+        for (key,value) in someDic {
+            print("key:\(key) value:\(value) ")
+            print("")
+        }
+        print("input param value is : \(someDic[1])")
+        
+        //闭包
+        let sumFunc = { (a :Int ,b :Int) -> Int  in
+                         return  a+b
+                      }
+        
+        print("value is \(sumFunc(4,5)) ")
+        //
+        let names = ["bb","ss"]
+        let reversed1  = names.sorted(by:{ (s1:String, s2:String) -> Bool in
+                            return s1 > s2
+                          })
+        let reversed2  = names.sorted(by:{ $0>$1 })
+        let reversed3  = names.sorted(){ $0>$1 }
+        let reversed4  = names.sorted{ $0>$1 }
+        
+        print("reversed1:\(reversed1)")
+        print("reversed2:\(reversed2)")
+        print("reversed2:\(reversed3)")
+        print("reversed2:\(reversed4)")
+        
+        //下标
+//        let dayWeaks = DayWeaks()
+//        print("value is:\(dayWeaks[1])")
+//
+//        // var let
+//        var myString:String? = "myString"
+//        let myLetStr = myString;
+//        print("value is:\(myString) let Str:\(myLetStr)")
+//
+//
+//        var btn1: UIButton!
+//        //btn1 = UIButton(type: .custom);
+//        btn1.frame = CGRect.init(x: 10, y: 10, width: 10, height: 120);//报错
+//
+//        var btn2: UIButton?
+//        btn2?.frame = CGRect.init(x: 10, y: 10, width: 10, height: 120);//没有报错，这里不执行  btn1?这个问号必须加上，不然编译之前就报错了
+//
+//        print("value is:")
+        //as?  as! 向下类型转换
+        //student as ? Man
+        
+        //any  AnyObject
+        // id == Any可以表示任何类型，包括方法类型（function types
+        // NSObject == AnyObject 可以代表任何class类型的实例
+        
+
+        
+        
 //Test 分类
 //        var view:UIView = UIView()
 //        view.x = 100
@@ -101,15 +182,98 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UIViewProtocol{
         }
         print(my.read());
         //==
-        self.gcd()
+
         //通知
         //var anyArr:[Any] = [Any]()  // Class 类型 AnyObject  "1"  结构体啥的 用Any
         // AnyObject
-       
         
         
+        var cfstr: CFString = "Why does Swift require double casting" as CFString
+        var nsstr: NSString = cfstr as NSString
+    
+        print("cfstr:\(cfstr) nsstr:\(nsstr)" )
+        
+//        self.data = 1;
+//
+//        print("data:\(data)")
+        
+      if let convertedRank = Rank1(rawValue: 3) {
+         let threeDescription = convertedRank.simpleDescription()
+         print("threeDescription:\(threeDescription)")
+         print("")
+      }
+        
+    //
+    self.test()
+        
+        
+        
+    //
         return true
     }
+    
+    open class ModelA {
+        var name:NSString = "我爱罗";
+    }
+    
+ 
+    public func test() {
+        let student:ModelA = ModelA()
+        
+        var arrayStudent:[ModelA] = [ModelA] ()
+        arrayStudent.append(student);
+        
+        var arrayStudent2:[ModelA] = arrayStudent
+        
+        print("")
+    }
+    
+    
+    
+//     public var data: Int? {
+//        set {
+//           data = newValue
+//        }
+//        get  {
+//         print("data")
+//        return 0
+//        }
+//    }
+    
+
+enum Rank1: Int {
+     case ace = 1
+     case two, three, four, five, six, seven, eight, nine, ten
+     case jack, queen, king
+
+     func simpleDescription() -> String {
+         switch self {
+         case .ace:
+             return "ace"
+         case .jack:
+             return "jack"
+         case .queen:
+             return "queen"
+         case .three:
+             return "three"
+         default:
+             return String(self.rawValue)
+         }
+     }
+ }
+    func doWork(block:()->()) {
+        print("header")
+        block()
+        print("footer")
+    }
+    func doWorkAsync(block: @escaping () -> ()) {
+        DispatchQueue.main.async {
+            block()
+        }
+    }
+
+    
+    
     
     @objc func notifyMethod() {
         print("notifyMethod")

@@ -18,7 +18,8 @@ pod 'Kingfisher'                   #,  '~> 3.11.0'   #图片加载库‘
 #响应式编程
 pod 'RxSwift'                      #,  '~> 3.6.1'    #响应式编程‘
 
-
+#图标库
+#pod 'PNChartSwift',:git => 'https://github.com/kevinzhow/PNChart-Swift.git'
 
 
 
