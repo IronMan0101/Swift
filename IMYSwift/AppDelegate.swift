@@ -61,6 +61,9 @@ class YouVC : UIViewController {
             print("为空了")
         }
         
+     
+        
+        
         if let clickIndexBock = clickBlock {
             clickIndexBock(5)
         }
@@ -104,9 +107,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UIViewProtocol{
     func read() -> String {
         return "继承协议";
     }
+    
+//    func testFunc(param1:String,param2:Int) -> Bool {
+//    func testFunc(lablel param1:String,param2:Int) -> Bool {
+    func testFunc(_ param1:String,param2:Int) -> Bool {
+        
+        print("param1:\(param1),param2:\(param2)")
+         return true
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        var array:[Int] = [1,2,3,4]
+        
+        for (index,value) in array.enumerated() {
+            print(index,value);
+            print("");
+        }
+        var test:String  = "123456";
+        test.insert("7", at: test.endIndex);
+        test.append("100")
+        test.insert("9", at: test.index(test.startIndex, offsetBy: 5));
+        print(test);
+        
+        //guard else
+        guard array[0]==1 else {
+            print("条件必须为真")
+            return false;
+        }
+        //函数
+//        self.testFunc(param1: "woailuo", param2: 123)
+//        self.testFunc(lablel: "woailuo", param2: 123)
+        self.testFunc("woailuo", param2: 123)
+        
+        
+        
         //通知
        NotificationCenter.default.addObserver(self, selector: #selector(notifyMethod), name: NSNotification.Name("Notify"), object: nil)
         
