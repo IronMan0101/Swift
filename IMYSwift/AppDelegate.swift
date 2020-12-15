@@ -61,9 +61,6 @@ class YouVC : UIViewController {
             print("为空了")
         }
         
-     
-        
-        
         if let clickIndexBock = clickBlock {
             clickIndexBock(5)
         }
@@ -115,39 +112,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UIViewProtocol{
         print("param1:\(param1),param2:\(param2)")
          return true
     }
+    
+    func backward(_ s1: String, _ s2: String) -> Bool {
+        return s1 > s2
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        //1.集合声明与遍历
         var array:[Int] = [1,2,3,4]
         
         for (index,value) in array.enumerated() {
             print(index,value);
             print("");
         }
-        var test:String  = "123456";
-        test.insert("7", at: test.endIndex);
-        test.append("100")
-        test.insert("9", at: test.index(test.startIndex, offsetBy: 5));
-        print(test);
-        
-        //guard else
-        guard array[0]==1 else {
-            print("条件必须为真")
-            return false;
-        }
-        //函数
-//        self.testFunc(param1: "woailuo", param2: 123)
-//        self.testFunc(lablel: "woailuo", param2: 123)
-        self.testFunc("woailuo", param2: 123)
-        
-        
-        
-        //通知
-       NotificationCenter.default.addObserver(self, selector: #selector(notifyMethod), name: NSNotification.Name("Notify"), object: nil)
-        
-        //
-       //字典
         let someDic:[Int:String] = [1:"s",2:"p"]
         for (key,value) in someDic {
             print("key:\(key) value:\(value) ")
@@ -155,25 +134,98 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UIViewProtocol{
         }
         print("input param value is : \(someDic[1])")
         
-        //闭包
+        //2.字符串的操作
+        var test:String  = "123456";
+        test.insert("7", at: test.endIndex);
+        test.append("100")
+        test.insert("9", at: test.index(test.startIndex, offsetBy: 5));
+        print(test);
+        
+        //3.条件语句 guard else
+        guard array[0]==1 else {
+            print("条件必须为真")
+            return false;
+        }
+        //4.switch与枚举
+        
+        
+        //5.函数
+//        self.testFunc(param1: "woailuo", param2: 123)
+//        self.testFunc(lablel: "woailuo", param2: 123)
+        self.testFunc("woailuo", param2: 123)
+        
+        //6.闭包
+        let names = ["bb","ss"]
+        //(String, String) -> Bool
+        let reversed0 = names.sorted(by: backward)
+        
+        let reversed1  = names.sorted(by:{ (s1:String, s2:String) -> Bool in
+                        print(s1)
+                        print(s2)
+                            return s1 > s2
+                          })
+        let reversed2  = names.sorted(by:{ $0>$1 })
+  
+        
+        print("reversed0:\(reversed0)")
+        print("reversed1:\(reversed1)")
+        print("reversed2:\(reversed2)")
+  
+        
         let sumFunc = { (a :Int ,b :Int) -> Int  in
                          return  a+b
                       }
         
         print("value is \(sumFunc(4,5)) ")
-        //
-        let names = ["bb","ss"]
-        let reversed1  = names.sorted(by:{ (s1:String, s2:String) -> Bool in
-                            return s1 > s2
-                          })
-        let reversed2  = names.sorted(by:{ $0>$1 })
+        
+        //6.1尾随闭包
+        /*
+         将一个很长的闭包表达式作为最后一个参数传递给函数
+         函数和闭包都是引用类型
+         **/
         let reversed3  = names.sorted(){ $0>$1 }
         let reversed4  = names.sorted{ $0>$1 }
+        print("reversed3:\(reversed3)")
+        print("reversed4:\(reversed4)")
+        //6.2自动闭包
+        /*
+         自动闭包是一种自动创建的闭包，用于包装传递给函数作为参数的表达式
+         */
+        var customersInLine = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
+        print("customersInLine1:\(customersInLine.count)")
+        let autoClose = { customersInLine.remove(at: 0) };
+        print("customersInLine2:\(customersInLine.count)")
+        let ss:String  = autoClose();
+        print("customersInLine3:\(customersInLine.count) ,ss:\(ss)")
         
-        print("reversed1:\(reversed1)")
-        print("reversed2:\(reversed2)")
-        print("reversed2:\(reversed3)")
-        print("reversed2:\(reversed4)")
+        //6.3逃逸闭包
+        /*
+         当一个闭包作为参数传到一个函数中，在函数返回之后才被执行。参数名之前标注 @escaping
+         **/
+        // customersInLine i= ["Barry", "Daniella"]
+        var customerProviders: [() -> String] = []
+        func collectCustomerProviders(_ customerProvider: @autoclosure @escaping () -> String) {
+            customerProviders.append(customerProvider)
+        }
+        collectCustomerProviders(customersInLine.remove(at: 0))
+        collectCustomerProviders(customersInLine.remove(at: 0))
+
+        print("Collected \(customerProviders.count) closures.")
+        // 打印“Collected 2 closures.”
+        for customerProvider in customerProviders {
+            print("Now serving \(customerProvider())!")
+        }
+        
+        
+        
+        
+        //7.通知
+       NotificationCenter.default.addObserver(self, selector: #selector(notifyMethod), name: NSNotification.Name("Notify"), object: nil)
+        
+     
+       
+     
+    
         
         //下标
 //        let dayWeaks = DayWeaks()
