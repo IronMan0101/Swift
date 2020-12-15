@@ -15,10 +15,10 @@
             timestampString = "581505110.024063"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "410"
-            endingLineNumber = "410"
-            landmarkName = "AppDelegate"
-            landmarkType = "3">
+            startingLineNumber = "430"
+            endingLineNumber = "430"
+            landmarkName = "func2(str:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

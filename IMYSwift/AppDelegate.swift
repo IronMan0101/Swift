@@ -215,8 +215,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UIViewProtocol{
         for customerProvider in customerProviders {
             print("Now serving \(customerProvider())!")
         }
+        //7.枚举
+        enum Rank: Int {
+             case ace = 1
+             case two, three, four, five, six, seven, eight, nine, ten
+             case jack, queen, king
+
+             func simpleDescription() -> String {
+                 switch self {
+                 case .ace:
+                     return "ace_desc"
+                 case .jack:
+                     return "jack_desc"
+                 case .queen:
+                     return "queen_desc"
+                 case .three:
+                     return "three_desc"
+                 default:
+                     return String(self.rawValue)
+                 }
+             }
+         }
         
+        print(Rank.ace.simpleDescription())
+        let emuRand = Rank.ace
+        switch emuRand {
+        case .ace:
+            print(".ace_switch")
+        default:
+            print("nothing")
+        }
+        //关联值 7.1
+        enum Barcode {
+            case upc(Int, Int, Int, Int)
+            case qrCode(String)
+        }
         
+        var productBarcode = Barcode.upc(8, 85909, 51226, 3)
+        productBarcode = .qrCode("ABCDEFGHIJKLMNOP")
+        //提取每个关联值作为一个常量（用 let 前缀）或者作为一个变量（用 var 前缀）
+        switch productBarcode {
+        case .upc(let numberSystem, let manufacturer, let product, let check):
+            print("UPC: \(numberSystem), \(manufacturer), \(product), \(check).")
+        case .qrCode(let productCode):
+            print("QR code: \(productCode).")
+        }
+        // 打印“QR code: ABCDEFGHIJKLMNOP.”
         
         
         //7.通知
@@ -285,12 +329,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UIViewProtocol{
 //
 //        print("data:\(data)")
         
-      if let convertedRank = Rank1(rawValue: 3) {
-         let threeDescription = convertedRank.simpleDescription()
-         print("threeDescription:\(threeDescription)")
-         print("")
-      }
-        
+
     //
     self.test()
         
@@ -329,26 +368,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UIViewProtocol{
 //    }
     
 
-enum Rank1: Int {
-     case ace = 1
-     case two, three, four, five, six, seven, eight, nine, ten
-     case jack, queen, king
 
-     func simpleDescription() -> String {
-         switch self {
-         case .ace:
-             return "ace"
-         case .jack:
-             return "jack"
-         case .queen:
-             return "queen"
-         case .three:
-             return "three"
-         default:
-             return String(self.rawValue)
-         }
-     }
- }
     func doWork(block:()->()) {
         print("header")
         block()
