@@ -262,6 +262,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UIViewProtocol{
         }
         // 打印“QR code: ABCDEFGHIJKLMNOP.”
         
+        //8.类以及结构体
+        /*
+         “相同”（用三个等号表示，===）与“等于”（用两个等号表示，==）的不同。“相同”表示两个类类型（class type）的常量或者变量引用同一个类实例。“等于”表示两个实例的值“相等”或“等价”
+         类是引用类型
+         **/
+        class SomeClass {
+            // 在这里定义类
+        }
+        
+        var cls1: SomeClass = SomeClass()
+        var cls2: SomeClass = SomeClass()
+        var cls3 = cls1
+        
+        if (cls1 === cls3) {
+            print("相同")
+        }
+        //9.属性
+        
+        
+
+        
         
         //7.通知
        NotificationCenter.default.addObserver(self, selector: #selector(notifyMethod), name: NSNotification.Name("Notify"), object: nil)
@@ -484,48 +505,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UIViewProtocol{
         array2.append(swiftArr2 as AnyObject)
         array2.append(swiftStr2 as AnyObject)
     
-        // if let 对上面进行解包 并且得安全解包
-        if  let name = str  as? String { //判断解包 后对象 是不是String 类型的
-            print("解包 后对象 是String 类型的")
-        }else {
-            print("解包 后对象 不是String 类型的")
-        }
-        
-        //闭包 函数参数
-        var funStr = self.func1(funx: func2);
-        var funStr2 = self.func1(funx: {//匿名
-            (str:String)->String  in  //  in  来分割
-            return "我爱罗"+str;
-        });
-        print ("fun result:\(funStr)") ;
-        print ("no name fun result:\(funStr2)") ;
-        //变量名 get set
-        print("time:\(self.time)");
-        self.time=50;
-        print("timeCount:\(String(describing: self.timeCount))");
-        //枚举类型  是一种类
-        let rank = Rank.one
-        print("Desc:"+rank.Desc())
-        
-        let rankString = RankString.one
-        switch rankString {
-        case .one:
-            print("is RankOne")
-        case .two:
-            print("is RankTwo")
-        default:
-            print("no Rank")
-        }
-        let rankValue = RankValue.one(buy1: "100万", sale1: 10000);//可以传值
-        switch rankValue {
-        case .one(let buy1,let sale1)://let?
-            print("buy:\(buy1) sale :\(sale1)")
-        default:
-            print("no RankValue")
-        }
-        //泛型
-        print( "RankT:"+String( RankT<Int>.One(100).Desc() ))
-   
+
         
     
         
@@ -542,48 +522,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UIViewProtocol{
             return 500
         }
     }
-    //枚举类型
-    enum Rank{
-        case one
-        case two
-        func Desc() -> String {
-            switch self {
-            case .one:
-                return "oneString"
-            default:
-                return "two"
-            }
-        }
-        var  value:Int{
-            switch self {
-            case .one:
-                return 100;
-            default:
-                return 200;
-            }
-        }
-    }
-    enum RankString :String {//其他类型
-        case one="one"
-        case two="two"
-    }
-    enum RankValue {
-        case one(buy1:String,sale1:Int)
-        case two(buy2:String,sale2:Int)
-    }
-    enum RankT<T> {
-        case One(T)
-        case Two(T)
-        func Desc() -> T {
-            switch self {
-            case .One(let value):
-                return value
-            case .Two(let value):
-                return value
-            }
-        }
-    }
-    
 
 
     func applicationWillResignActive(_ application: UIApplication) {
