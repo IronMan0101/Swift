@@ -269,6 +269,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UIViewProtocol{
          **/
         class SomeClass {
             // 在这里定义类
+            var width:Int = 3
+            var height:Int = 2
+            
+            //只有 getter 没有 setter 的计算属性叫只读计算属性
+            var content:Int {
+                return  width*height
+            }
+            
+            var content2:Int {
+                get {
+                    return width*2
+                }
+                set {
+                    width = newValue*100
+                }
+                
+            }
+            
         }
         
         var cls1: SomeClass = SomeClass()
@@ -278,8 +296,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UIViewProtocol{
         if (cls1 === cls3) {
             print("相同")
         }
+        print("content:\(cls1.content)")
+        print("content:\(cls1.content2),width:\(cls1.width)")
+        cls1.content2 = 100
+        print("content:\(cls1.content2),width:\(cls1.width)")
+      
         //9.属性
+        //延时加载存储属性  包装器
         
+        //10.方法
+        /*
+         结构体和枚举是值类型。默认情况下，值类型的属性不能在它的实例方法中被修改。
+         常量不能调用可变方法
+         */
+        struct Point {
+            var x = 0.0, y = 0.0
+            mutating func moveBy(x deltaX: Double, y deltaY: Double) {
+                x += deltaX
+                y += deltaY
+            }
+        }
+        var somePoint = Point(x: 1.0, y: 1.0)
+        somePoint.moveBy(x: 2.0, y: 3.0)
+        print("The point is now at (\(somePoint.x), \(somePoint.y))")
+        // 打印“The point is now at (3.0, 4.0)”
+        
+//        let fixedPoint = Point(x: 3.0, y: 3.0)
+//        fixedPoint.moveBy(x: 2.0, y: 3.0)
+        
+        
+        class SomeClass1 {
+            class func someTypeMethod() {
+                // 在这里实现类型方法
+                print("+号方法")
+            }
+        }
+        SomeClass1.someTypeMethod()
+        
+        //
         
 
         
