@@ -333,114 +333,118 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UIViewProtocol{
         }
         SomeClass1.someTypeMethod()
         
-        //
+        //11.继承
+        class Vehicle  {
+            var gear = 1
+            func read() {
+                print("Vehicle..read")
+            }
+            init() {
+                print("Vehicle...init")
+            }
+            deinit {
+                print("Vehicle...dealloc")
+            }
+        }
+        class Car: Vehicle {
+            override func read() {
+                print("Car..read")
+            }
+        }
         
+        var car:Car = Car()
+        print(car.read())
+        //12.构造过程
+        /*
+         指定构造器必须总是向上代理。便利构造器必须总是横向代理 。便利构造器最后必须调用指定构造器。
+         失败构造器?
+         */
+        class Food {
+            var name: String
+            init(name: String) {
+                self.name = name
+            }
 
+            convenience init() {
+                self.init(name: "[Unnamed]")
+            }
+        }
+        //13.可选链
+        /*
+         通过在想调用的属性、方法，或下标的可选值后面放一个问号（?），可以定义一个可选链。
+         这一点很像在可选值后面放一个叹号（!）来强制解包它的值。它们的主要区别在于当可选值为空时可选链式调用只会调用失败，
+         然而强制解包将会触发运行时错误
+         */
+        class Person {
+            var residence: Residence?
+        }
+
+        class Residence {
+            var numberOfRooms = 1
+        }
+        let john = Person()
+//        john.residence = Residence()
+//        let roomCount = john.residence!.numberOfRooms
+//        print(roomCount)
+        
+        if let roomCount = john.residence?.numberOfRooms {
+            print("roomCount:\(roomCount)")
+            print("")
+        } else {
+            print("Unable to retrieve the number of rooms.")
+        }
+       //14.类型转化
+        class MediaItem {
+            var name: String
+            init(name: String) {
+                self.name = name
+            }
+        }
+        class Movie: MediaItem {
+            var director: String
+            init(name: String, director: String) {
+                self.director = director
+                super.init(name: name)
+            }
+        }
+
+        class Song: MediaItem {
+            var artist: String
+            init(name: String, artist: String) {
+                self.artist = artist
+                super.init(name: name)
+            }
+        }
+        let library = [
+            Movie(name: "Casablanca", director: "Michael Curtiz"),
+            Song(name: "Blue Suede Shoes", artist: "Elvis Presley"),
+            Movie(name: "Citizen Kane", director: "Orson Welles"),
+            Song(name: "The One And Only", artist: "Chesney Hawkes"),
+            Song(name: "Never Gonna Give You Up", artist: "Rick Astley")
+        ]
+        var movieCount = 0
+        var songCount = 0
+
+        for item in library {
+            if item is Movie {
+                movieCount += 1
+            } else if item is Song {
+                songCount += 1
+            }
+        }
+
+        print("Media library contains \(movieCount) movies and \(songCount) songs")
+        // 打印“Media library contains 2 movies and 3 songs”
         
         
         //7.通知
        NotificationCenter.default.addObserver(self, selector: #selector(notifyMethod), name: NSNotification.Name("Notify"), object: nil)
         
-     
-       
-     
-    
-        
-        //下标
-//        let dayWeaks = DayWeaks()
-//        print("value is:\(dayWeaks[1])")
-//
-//        // var let
-//        var myString:String? = "myString"
-//        let myLetStr = myString;
-//        print("value is:\(myString) let Str:\(myLetStr)")
-//
-//
-//        var btn1: UIButton!
-//        //btn1 = UIButton(type: .custom);
-//        btn1.frame = CGRect.init(x: 10, y: 10, width: 10, height: 120);//报错
-//
-//        var btn2: UIButton?
-//        btn2?.frame = CGRect.init(x: 10, y: 10, width: 10, height: 120);//没有报错，这里不执行  btn1?这个问号必须加上，不然编译之前就报错了
-//
-//        print("value is:")
-        //as?  as! 向下类型转换
-        //student as ? Man
-        
-        //any  AnyObject
-        // id == Any可以表示任何类型，包括方法类型（function types
-        // NSObject == AnyObject 可以代表任何class类型的实例
-        
-
-        
-        
-//Test 分类
-//        var view:UIView = UIView()
-//        view.x = 100
-//        print(view)
-        //Test 协议
-        var  my:YouVC =  YouVC()
-        my.delegate = self
-       
-    
-        my.clickBlock  = {
-            (param:Int)->Void in  // in
-            print("input param value is : \(param)")
-        }
-        print(my.read());
-        //==
-
-        //通知
-        //var anyArr:[Any] = [Any]()  // Class 类型 AnyObject  "1"  结构体啥的 用Any
-        // AnyObject
-        
-        
-        var cfstr: CFString = "Why does Swift require double casting" as CFString
-        var nsstr: NSString = cfstr as NSString
-    
-        print("cfstr:\(cfstr) nsstr:\(nsstr)" )
-        
-//        self.data = 1;
-//
-//        print("data:\(data)")
-        
-
-    //
-    self.test()
-        
-        
-        
     //
         return true
     }
     
-    open class ModelA {
-        var name:NSString = "我爱罗";
-    }
-    
- 
-    public func test() {
-        let student:ModelA = ModelA()
-        
-        var arrayStudent:[ModelA] = [ModelA] ()
-        arrayStudent.append(student);
-        
-        var arrayStudent2:[ModelA] = arrayStudent
-        
-        print("")
-    }
-    
-    
-    
-//     public var data: Int? {
-//        set {
-//           data = newValue
-//        }
-//        get  {
-//         print("data")
-//        return 0
-//        }
-//    }
+
     
 
 
