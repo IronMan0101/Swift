@@ -426,19 +426,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UIViewProtocol{
         var songCount = 0
 
         for item in library {
-            if item is Movie {
+            if item is Song {
                 movieCount += 1
-            } else if item is Song {
+            } else if item is Movie {
                 songCount += 1
             }
         }
 
         print("Media library contains \(movieCount) movies and \(songCount) songs")
         // 打印“Media library contains 2 movies and 3 songs”
+       // 向下转型 as? as!
+        for item in library {
+            if let movie = item as? Movie {
+                print("Movie: \(movie.name), dir. \(movie.director)")
+            } else if let song = item as? Song {
+                print("Song: \(song.name), by \(song.artist)")
+            }
+        }
+        //14.2 Any 和 AnyObject 的类型转换
+        /*Any 可以表示任何类型，包括函数类型。
+        AnyObject 可以表示任何类类型的实例。
+        */
+        var things = [Any] ()
+        things.append("字符串")
+        things.append(12)
+        
         
         
         //7.通知
        NotificationCenter.default.addObserver(self, selector: #selector(notifyMethod), name: NSNotification.Name("Notify"), object: nil)
+
         
     //
         return true
